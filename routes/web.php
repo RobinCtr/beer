@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\vistas;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::name('inicio')->get('/', function () {
-    return view('layouts/presentacion/presentacion');
+    return view('welcome');
 });
+
+Route::name('admin')->get('admin/',[vistas::class,'admin']);
+
