@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\vistas;
+use App\Http\Controllers\ProductosController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +21,4 @@ Route::name('inicio')->get('/', function () {
 
 Route::name('admin')->get('admin/',[vistas::class,'admin']);
 
+Route::name('admin.productos.alta')->post('admin/',[ProductosController::class,'altaProductos']);

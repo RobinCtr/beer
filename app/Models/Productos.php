@@ -11,10 +11,16 @@ class Productos extends Model
     protected $table ="tb_productos";
     protected $primaryKey ="id";
     protected $fillable =[
-        'name',
-        'costo',
+        'id_tipo',
+        'marca',
         'tamaño',
-        'um',
-        'existencia'
+        'precio',
+        'cantidad',
+        'img'
     ];
+
+    public function TiposBebidas()// un administrador tiene un usuario
+    {
+        return $this->hasOne(TiposBebidas::class, 'id', 'id_tipo');//campos de busqueda
+    }
 }
