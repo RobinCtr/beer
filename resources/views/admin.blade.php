@@ -35,7 +35,7 @@
                                 <td>
                                     <div class="d-flex justify-content-between">
                                         <button class="btn btn-outline-warning" data-toggle="modal" data-target="#editar{{$producto->id}}"><i class="icon-sm mdi mdi-lead-pencil"></i></button>
-                                        <button class="btn btn-outline-danger"><i class="icon-sm mdi mdi-delete-forever"></i></button>
+                                        <button class="btn btn-outline-danger" data-toggle="modal" data-target="#eliminar{{$producto->id}}"><i class="icon-sm mdi mdi-delete-forever"></i></button>
                                     </div>
                                 </td>
                             </tr>
@@ -123,7 +123,8 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="Marca">Marca</label>
-                            <input type="text" class="form-control" name="marca" id="marca" placeholder="Marca de la bebida">
+                            <input type="text" class="form-control marca" name="marca" id="marca" placeholder="Marca de la bebida">
+                            <div id="resultado1"></div><br>
                         </div>
                     </div>
                     <div class="form-row">
@@ -139,7 +140,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="cantidad">Cantidad de stock</label>
-                            <input type="number" class="form-control" name="cantidad" id="cantidad" placeholder="Cantidad de stock">
+                            <input type="text" class="form-control" name="cantidad" id="cantidad" placeholder="Cantidad de stock">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="img">Imagen de la Bebida</label>
@@ -161,7 +162,7 @@
 
 <!-- Modal EDITAR PRODUCTO-->
 @foreach($productos as $producto)
-<div class="modal fade"  id="editar{{$producto->id}}" tabindex="-1" aria-labelledby="editarProductoModal" aria-hidden="true">
+<div class="modal fade" id="editar{{$producto->id}}" tabindex="-1" aria-labelledby="editarProductoModal" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -171,8 +172,9 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{route('admin.productos.alta')}}" method="POST" enctype="multipart/form-data">
+                <form action="{{route('admin.productos.salvar',['id'=> $producto->id])}}" method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}
+                    {{ method_field('PUT')}}
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="id_tipo">Tipo de Bebida</label>
@@ -184,23 +186,23 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="Marca">Marca</label>
-                            <input type="text" class="form-control" name="marca" id="marca" placeholder="Marca de la bebida" value="{{$producto->marca}}">
+                            <input type="text" class="form-control" name="marca" id="marcaEditar" placeholder="Marca de la bebida" value="{{$producto->marca}}">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="tamaño">Tamaño de la bebida en ml</label>
-                            <input type="text" class="form-control" name="tamaño" id="tamaño" placeholder="Tamaño de la bebida en ml" value="{{$producto->tamaño}}">
+                            <input type="text" class="form-control" name="tamaño" id="tamañoEditar" placeholder="Tamaño de la bebida en ml" value="{{$producto->tamaño}}">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="precio">Precio $</label>
-                            <input type="text" class="form-control" name="precio" id="precio" placeholder="Precio de la bebida" value="{{$producto->precio}}">
+                            <input type="text" class="form-control" name="precio" id="precioEditar" placeholder="Precio de la bebida" value="{{$producto->precio}}">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="cantidad">Cantidad de stock</label>
-                            <input type="number" class="form-control" name="cantidad" id="cantidad" placeholder="Cantidad de stock" value="{{$producto->cantidad}}">
+                            <input type="number" class="form-control" name="cantidad" id="cantidadEditar" placeholder="Cantidad de stock" value="{{$producto->cantidad}}">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="img">Imagen de la Bebida</label>
@@ -220,7 +222,42 @@
         </div>
     </div>
 </div>
+@endforeach
 
+<!-- Modal ELIMINAR PRODUCTO-->
+@foreach($productos as $producto)
+<div class="modal fade" id="eliminar{{$producto->id}}" tabindex="-1" aria-labelledby="editarProductoModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editarProductoModal">ELIMINAR PRODUCTO</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label for="">DESEA ELIMINAR EL PRODUCTO {{$producto->marca}} {{$producto->tamaño}} ml</label>
+
+                    </div>
+
+                </div>
+
+
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
+                    <a href="{{route('admin.productos.eliminar',['id'=> $producto->id])}}">
+                        <div class="">
+                            <input type="button" class="btn btn-outline-info" value="ELIMINAR">
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 @endforeach
 
 <!-- Modal AGREGAR USUARIO-->
@@ -265,7 +302,51 @@
     </div>
 </div>
 
+@endsection
 
+@section('js')
+<script src="{{ asset('layouts/jquery-3.6.0.min.js') }}"></script>
 
-  
+<script>
+    const $marca = document.querySelector("#marca");
+    const patron = /[a-zA-Z]+/;
+
+    $marca.addEventListener("keydown", event => {
+        if (patron.test(event.key)) {
+            document.getElementById('marca').style.border = "1px solid #00cc00";
+        }else{
+            event.preventDefault();
+        }
+    });
+    const $tamaño = document.querySelector("#tamaño");
+    const patronT = /[0-9]+/;
+
+    $tamaño.addEventListener("keydown", event => {
+        if (patronT.test(event.key)) {
+            document.getElementById('tamaño').style.border = "1px solid #00cc00";
+        }else{
+            event.preventDefault();
+        }
+    });
+    const $precio = document.querySelector("#precio");
+    const patronP = /[0-9\.]+/;
+
+    $precio.addEventListener("keydown", event => {
+        if (patronP.test(event.key)) {
+            document.getElementById('precio').style.border = "1px solid #00cc00";
+        }else{
+            event.preventDefault();
+        }
+    });
+    const $cantidad = document.querySelector("#cantidad");
+    const patronC = /[0-9\.]+/;
+
+    $cantidad.addEventListener("keydown", event => {
+        if (patronC.test(event.key)) {
+            document.getElementById('cantidad').style.border = "1px solid #00cc00";
+        }else{
+            event.preventDefault();
+        }
+    });
+</script>
 @endsection
