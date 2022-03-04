@@ -53,6 +53,6 @@ class ProductosController extends Controller
   }
     public function eliminarProducto(Productos $id){
       $id->delete();
-      return redirect()->route('admin.productos');
+      return redirect()->route('admin');
     }
   }

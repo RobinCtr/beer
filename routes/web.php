@@ -23,4 +23,4 @@ Route::name('admin')->get('admin/',[vistas::class,'admin']);
 
 Route::name('admin.productos.alta')->post('admin/',[ProductosController::class,'altaProductos']);
 Route::name('admin.productos.salvar')->put('admin.productos.salvar/{id}',[ProductosController::class,'salvarProducto']);
-Route::name('admin.productos.eliminar')->put('admin.productos.eliminar/{id}',[ProductosController::class,'eliminarProducto']);
+Route::name('admin.productos.eliminar')->get('admin.productos.eliminar/{id}',[ProductosController::class,'eliminarProducto']);
