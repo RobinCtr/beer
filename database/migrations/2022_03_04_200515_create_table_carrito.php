@@ -17,6 +17,7 @@ class CreateTableCarrito extends Migration
             $table->id();
             $table->integer('codigo');
             $table->integer('cantidad');
+            $table->double('costo');
             $table->timestamps();
         });
     }

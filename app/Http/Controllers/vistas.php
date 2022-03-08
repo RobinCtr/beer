@@ -9,20 +9,24 @@ use Illuminate\Http\Request;
 
 class vistas extends Controller
 {
-    public function admin(){
-        $productos=Productos::all();
-        $bebidas=TiposBebidas::all();
+    public function admin()
+    {
+        $productos = Productos::all();
+        $bebidas = TiposBebidas::all();
         return view('admin')
-            ->with(['productos'=>$productos])
-            ->with(['bebidas'=>$bebidas]);
+            ->with(['productos' => $productos])
+            ->with(['bebidas' => $bebidas]);
     }
-    public function puntoVenta(){
-        $productos=Productos::all();
-        $bebidas=TiposBebidas::all();
-        $carrito=Carrito::all();
+    public function puntoVenta()
+    {
+        $productos = Productos::all();
+        $bebidas = TiposBebidas::all();
+        $carrito = Carrito::all();
+        $total = Carrito::all()->sum('costo');
         return view('admin.puntoVenta.index')
-            ->with(['productos'=>$productos])
-            ->with(['carrito'=>$carrito])
-            ->with(['bebidas'=>$bebidas]);        
+        ->with(['total' => $total])
+            ->with(['productos' => $productos])
+            ->with(['carrito' => $carrito])
+            ->with(['bebidas' => $bebidas]);
     }
 }

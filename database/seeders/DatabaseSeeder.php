@@ -24,7 +24,8 @@ class DatabaseSeeder extends Seeder
         ]);
         DB::table('tb_carrito')->insert([
             'codigo' => '1',
-            'cantidad' => '2'
+            'cantidad' => '2',
+            'costo' => '60'
         ]);
         DB::table('tb_productos')->insert([
             'id_tipo'       => '1',

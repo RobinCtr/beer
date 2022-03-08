@@ -27,4 +27,6 @@ Route::name('admin.productos.alta')->post('admin/',[ProductosController::class,'
 Route::name('admin.productos.salvar')->put('admin.productos.salvar/{id}',[ProductosController::class,'salvarProducto']);
 Route::name('admin.productos.eliminar')->get('admin.productos.eliminar/{id}',[ProductosController::class,'eliminarProducto']);
 
-Route::name('admin.carrito.agregar')->get('admin.carrito.agregar',[ProductosController::class,'agregarCarrito']);
+Route::name('admin.carrito.agregar')->post('admin.carrito.agregar',[ProductosController::class,'agregarCarrito']);
+Route::name('admin.carrito.cancelar')->get('admin.carrito.cancelar',[ProductosController::class,'cancelarCarrito']);
+Route::name('admin.carrito.eliminar')->get('admin.carrito.eliminar/{id}',[ProductosController::class,'eliminarCarrito']);

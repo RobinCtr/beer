@@ -369,6 +369,7 @@
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
+          @include('layouts/notificacion')
 
           @yield('contenido')
         </div>

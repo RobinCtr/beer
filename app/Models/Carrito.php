@@ -12,6 +12,7 @@ class Carrito extends Model
     protected $primaryKey ="id";
     protected $fillable =[
         'codigo',
-        'cantidad'
+        'cantidad',
+        'costo'
     ];
 }
