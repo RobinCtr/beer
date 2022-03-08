@@ -207,13 +207,15 @@
 
 <script>
     const $marca = document.querySelector("#marca");
-    const patron = /[a-zA-Z]+/;
+    const patron = /[a-zA-Z/]+/;
 
     $marca.addEventListener("keydown", event => {
         if (patron.test(event.key)) {
             document.getElementById('marca').style.border = "1px solid #00cc00";
         } else {
-            event.preventDefault();
+            if (event.keyCode == 8 || event.keyCode == 32) {} else {
+                event.preventDefault();
+            }
         }
     });
     const $tamaño = document.querySelector("#tamaño");
@@ -222,8 +224,10 @@
     $tamaño.addEventListener("keydown", event => {
         if (patronT.test(event.key)) {
             document.getElementById('tamaño').style.border = "1px solid #00cc00";
-        } else {
-            event.preventDefault();
+        }  else {
+            if (event.keyCode == 8) {} else {
+                event.preventDefault();
+            }
         }
     });
     const $precio = document.querySelector("#precio");
@@ -232,18 +236,22 @@
     $precio.addEventListener("keydown", event => {
         if (patronP.test(event.key)) {
             document.getElementById('precio').style.border = "1px solid #00cc00";
-        } else {
-            event.preventDefault();
+        }  else {
+            if (event.keyCode == 8 ) {} else {
+                event.preventDefault();
+            }
         }
     });
     const $cantidad = document.querySelector("#cantidad");
-    const patronC = /[0-9\.]+/;
+    const patronC = /[0-9]+/;
 
     $cantidad.addEventListener("keydown", event => {
         if (patronC.test(event.key)) {
             document.getElementById('cantidad').style.border = "1px solid #00cc00";
-        } else {
-            event.preventDefault();
+        }  else {
+            if (event.keyCode == 8) {} else {
+                event.preventDefault();
+            }
         }
     });
 </script>

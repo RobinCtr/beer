@@ -22,5 +22,16 @@ class DatabaseSeeder extends Seeder
         DB::table('tipoBebidas')->insert([
             'nombre' => 'Tequila',
         ]);
+        DB::table('tb_carrito')->insert([
+            'codigo' => '1',
+            'cantidad' => '2'
+        ]);
+        DB::table('tb_productos')->insert([
+            'id_tipo'       => '1',
+            'marca'         => 'Ultra',
+            'precio'        => '30',
+            'tamaño'        => '100',
+            'cantidad'      => '3'
+        ]);
     }
 }

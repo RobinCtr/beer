@@ -55,4 +55,14 @@ class ProductosController extends Controller
       $id->delete();
       return redirect()->route('admin');
     }
+    public function agregarCarrito(Request $request){
+     
+      //--------------------------------------------
+      $pro = Productos::create(array(
+        'codigo' =>$request->input('id_tipo'),
+        'cantidad'=>$request->input('1'), 
+        
+         ));
+       return redirect()->route('admin');
+  }
   }
