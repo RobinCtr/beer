@@ -16,12 +16,12 @@ class UsuariosController extends Controller
    
         //--------------------------------------------
         $usu = Usuarios::create(array(
-          'nombre_Completo'=>$request->input('nombre_Completo'),
+          'nombrCompleto'=>$request->input('nombre_Completo'),
           'telefono'=>$request->input('telefono'), 
           'correo'=>$request->input('correo'), 
           'password'=>$request->input('password'), 
           'estatus'=>$request->input('estatus'), 
-          'id_tipo'=>$request->input('id_tipo'), 
+          //'id_tipo'=>$request->input('id_tipo'), 
           'img' =>$img2,
            ));
          return redirect()->route('admin');
@@ -40,7 +40,7 @@ class UsuariosController extends Controller
         }
         //--------------------------------
         $query = Usuarios::find($id->id);
-          $query->nombre_Completo = $request->nombre_Completo;
+          $query->nombreCompleto = $request->nombre_Completo;
           $query->telefono = $request->telefono;
           $query->correo = $request->correo;
           $query->password = $request->password;
