@@ -62,28 +62,28 @@
                         <thead>
                             <tr>
                                 <th> ID </th>
-                                <th> NOMBRE </th>
-                                <th> COSTO </th>
-                                <th> TAMAÑO </th>
-                                <th> EXISTENCIA</th>
+                                <th> NOMBRE COMPLETO </th>
+                                <th> TELEFONO </th>
+                                <th> CORREO </th>
+                                <th> ESTATUS</th>
 
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($productos as $producto)
+                            @foreach($usuarios as $usuario)
                             <tr>
 
                                 <td>
-                                    <span class="pl-2">{{ $producto->id}}</span>
+                                    <span class="pl-2">{{ $usuario->id}}</span>
                                 </td>
-                                <td> {{ $producto->nombre}} </td>
-                                <td> {{ $producto->costo}} </td>
-                                <td> {{ $producto->tamaño}} {{ $producto->um}}</td>
-                                <td> {{ $producto->existencia}}</td>
+                                <td> {{ $usuario->nombreCompleto}} </td>
+                                <td> {{ $usuario->telefono}} </td>
+                                <td> {{ $usuario->correo}} </td>
+                                <td> {{ $usuario->estatus}}</td>
                                 <td>
-                                    <div class="d-flex justify-content-center">
-                                        <button class="btn btn-outline-warning" data-toggle="modal" data-target="#editarUsuario"><i class="icon-sm mdi mdi-lead-pencil"></i></button>
-                                        <button class="btn btn-outline-danger"><i class="icon-sm mdi mdi-delete-forever"></i></button>
+                                <div class="d-flex justify-content-between">
+                                        <button class="btn btn-outline-warning" data-toggle="modal" data-target="#editarUsuario{{$usuario->id}}"><i class="icon-sm mdi mdi-lead-pencil"></i></button>
+                                        <button class="btn btn-outline-danger" data-toggle="modal" data-target="#eliminarUsuario{{$usuario->id}}"><i class="icon-sm mdi mdi-delete-forever"></i></button>
                                     </div>
                                 </td>
                             </tr>
@@ -98,6 +98,7 @@
 </div>
 <!-- -------- MODALES DE CRUD --------  -->
 @include('admin.modalesProductos')
+@include('admin.modalesUsuarios')
 
 @endsection
 

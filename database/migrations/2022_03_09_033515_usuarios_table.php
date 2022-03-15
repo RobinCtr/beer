@@ -20,7 +20,7 @@ class UsuariosTable extends Migration
             $table->string('correo');
             $table->string('password');
             $table->string('estatus');
-            $table->integer('id_tipo');
+            $table->integer('id_tipo')->nullable();
             $table->text('img');
             $table->timestamps();
         });

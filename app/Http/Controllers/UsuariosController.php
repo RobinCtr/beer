@@ -16,7 +16,7 @@ class UsuariosController extends Controller
    
         //--------------------------------------------
         $usu = Usuarios::create(array(
-          'nombrCompleto'=>$request->input('nombre_Completo'),
+          'nombreCompleto'=>$request->input('nombreCompleto'),
           'telefono'=>$request->input('telefono'), 
           'correo'=>$request->input('correo'), 
           'password'=>$request->input('password'), 
@@ -40,7 +40,7 @@ class UsuariosController extends Controller
         }
         //--------------------------------
         $query = Usuarios::find($id->id);
-          $query->nombreCompleto = $request->nombre_Completo;
+          $query->nombreCompleto = $request->nombreCompleto;
           $query->telefono = $request->telefono;
           $query->correo = $request->correo;
           $query->password = $request->password;

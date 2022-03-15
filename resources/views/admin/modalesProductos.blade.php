@@ -161,9 +161,7 @@
 @endforeach
 
 
-
 @section('js')
-
 
 <script>
     const $marca = document.querySelector("#marca");
@@ -184,7 +182,7 @@
     $tamaño.addEventListener("keydown", event => {
         if (patronT.test(event.key)) {
             document.getElementById('tamaño').style.border = "1px solid #00cc00";
-        }  else {
+        } else {
             if (event.keyCode == 8) {} else {
                 event.preventDefault();
             }
@@ -196,8 +194,8 @@
     $precio.addEventListener("keydown", event => {
         if (patronP.test(event.key)) {
             document.getElementById('precio').style.border = "1px solid #00cc00";
-        }  else {
-            if (event.keyCode == 8 ) {} else {
+        } else {
+            if (event.keyCode == 8) {} else {
                 event.preventDefault();
             }
         }
@@ -208,11 +206,12 @@
     $cantidad.addEventListener("keydown", event => {
         if (patronC.test(event.key)) {
             document.getElementById('cantidad').style.border = "1px solid #00cc00";
-        }  else {
+        } else {
             if (event.keyCode == 8) {} else {
                 event.preventDefault();
             }
         }
     });
+
 </script>
 @endsection
