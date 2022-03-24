@@ -60,13 +60,13 @@
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-12">
-                       <a href="{{route('aviso')}}"> <label for="">He leido y acepto el aviso de privacidad</label></a>
+                            <a href="{{route('aviso')}}"> <label for="">He leido y acepto el aviso de privacidad</label></a>
 
                             <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="" id="avisoSuccess">
+                                <input class="form-check-input" type="checkbox" name="" id="avisoSuccess">
 
                             </div>
-                           
+
 
                         </div>
                     </div>
@@ -193,9 +193,9 @@
 
 
 <script>
-                document.getElementById("save").style.visibility = "hidden";
+    document.getElementById("save").style.visibility = "hidden";
 
-// VALIDACION DE AGREGAR USUARIO
+    // VALIDACION DE AGREGAR USUARIO
     const $nombreCompleto = document.querySelector("#nombreCompleto");
     const patronName = /[a-zA-Z/]+/;
 
@@ -233,10 +233,10 @@
             }
         }
     });
-// FIN DE VALIDACION DE AGREGAR USUARIO
-// VALIDACION DE MODIFICAR USUARIO
+    // FIN DE VALIDACION DE AGREGAR USUARIO
+    // VALIDACION DE MODIFICAR USUARIO
 
-const $nombreCompletoEditar = document.querySelector("#nombreCompletoEditar");
+    const $nombreCompletoEditar = document.querySelector("#nombreCompletoEditar");
     const patronNameEditar = /[a-zA-Z/]+/;
 
     $nombreCompletoEditar.addEventListener("keydown", event => {
@@ -283,5 +283,5 @@ const $nombreCompletoEditar = document.querySelector("#nombreCompletoEditar");
 
         }
     });
-// Fin modal
+    // Fin modal
 </script>

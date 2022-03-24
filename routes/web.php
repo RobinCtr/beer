@@ -21,8 +21,12 @@ Route::name('inicio')->get('/', [vistas::class, 'inicio']);
 
 Route::name('aviso')->get('aviso/', [vistas::class, 'aviso']);
 
+Route::name('login')->get('login/', [vistas::class, 'login']);
+Route::name('register')->get('register/', [vistas::class, 'register']);
+
 
 Route::name('admin')->get('admin/', [vistas::class, 'admin']);
+
 Route::name('ventas')->get('ventas/', [vistas::class, 'puntoVenta']);
 
 
