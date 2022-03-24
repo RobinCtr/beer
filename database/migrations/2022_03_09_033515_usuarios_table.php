@@ -22,6 +22,8 @@ class UsuariosTable extends Migration
             $table->string('estatus');
             $table->integer('id_tipo')->nullable();
             $table->text('img');
+            $table->text('aviso');
+
             $table->timestamps();
         });
     }

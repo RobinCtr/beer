@@ -21,6 +21,8 @@ class UsuariosController extends Controller
           'correo'=>$request->input('correo'), 
           'password'=>$request->input('password'), 
           'estatus'=>$request->input('estatus'), 
+          'aviso'=>'aceptado', 
+
           //'id_tipo'=>$request->input('id_tipo'), 
           'img' =>$img2,
            ));

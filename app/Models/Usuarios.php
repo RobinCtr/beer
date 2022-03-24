@@ -17,6 +17,8 @@ class Usuarios extends Model
         'password',
         'estatus',
         'id_tipo',
-        'img'
+        'img',
+        'aviso'
+
     ];
 }

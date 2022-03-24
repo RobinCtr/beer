@@ -7,9 +7,22 @@ use App\Models\Productos;
 use App\Models\TiposBebidas;
 use App\Models\Usuarios;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 
 class vistas extends Controller
 {
+    public function inicio (){
+        return view('welcome');
+    }
+    public function aviso (){
+        return view('avisoPrivacidad');
+    }
+    public function avisoAceptar (Request $request){
+        $cookie = Cookie::make('aviso', '1', 1);
+       
+        return redirect()->route('inicio')
+        ->withCookie($cookie);
+    }
     public function admin()
     {
         $productos = Productos::all();

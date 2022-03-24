@@ -58,9 +58,21 @@
                             </div>
                         </div>
                     </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                       <a href="{{route('aviso')}}"> <label for="">He leido y acepto el aviso de privacidad</label></a>
+
+                            <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="" id="avisoSuccess">
+
+                            </div>
+                           
+
+                        </div>
+                    </div>
                     <div class="modal-footer justify-content-between">
                         <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-outline-info">Guardar</button>
+                        <button type="submit" class="btn btn-outline-info" id="save">Guardar</button>
                     </div>
                 </form>
             </div>
@@ -181,6 +193,8 @@
 
 
 <script>
+                document.getElementById("save").style.visibility = "hidden";
+
 // VALIDACION DE AGREGAR USUARIO
     const $nombreCompleto = document.querySelector("#nombreCompleto");
     const patronName = /[a-zA-Z/]+/;
@@ -256,6 +270,17 @@ const $nombreCompletoEditar = document.querySelector("#nombreCompletoEditar");
             if (event.keyCode == 8 || event.keyCode == 32) {} else {
                 event.preventDefault();
             }
+        }
+    });
+    const $avisoSuccess = document.querySelector("#avisoSuccess");
+
+    $avisoSuccess.addEventListener("change", event => {
+        if ($avisoSuccess.checked) {
+            document.getElementById("save").style.visibility = "visible";
+
+        } else {
+            document.getElementById("save").style.visibility = "hidden";
+
         }
     });
 // Fin modal

@@ -16,23 +16,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::name('inicio')->get('/', function () {
-    return view('welcome');
-});
-
-Route::name('admin')->get('admin/',[vistas::class,'admin']);
-Route::name('ventas')->get('ventas/',[vistas::class,'puntoVenta']);
+Route::name('inicio')->get('/', [vistas::class, 'inicio']);
 
 
-Route::name('admin.productos.alta')->post('admin/',[ProductosController::class,'altaProductos']);
-Route::name('admin.productos.salvar')->put('admin.productos.salvar/{id}',[ProductosController::class,'salvarProducto']);
-Route::name('admin.productos.eliminar')->get('admin.productos.eliminar/{id}',[ProductosController::class,'eliminarProducto']);
-
-Route::name('admin.usuarios.alta')->post('admin.usuarios.alta',[UsuariosController::class,'altaUsuario']);
-Route::name('admin.usuarios.editar')->put('admin.usuarios.editar/{id}',[UsuariosController::class,'salvarUsuario']);
-Route::name('admin.usuarios.eliminar')->get('admin.usuarios.eliminar/{id}',[UsuariosController::class,'eliminarUsuario']);
+Route::name('aviso')->get('aviso/', [vistas::class, 'aviso']);
 
 
-Route::name('admin.carrito.agregar')->post('admin.carrito.agregar',[ProductosController::class,'agregarCarrito']);
-Route::name('admin.carrito.cancelar')->get('admin.carrito.cancelar',[ProductosController::class,'cancelarCarrito']);
-Route::name('admin.carrito.eliminar')->get('admin.carrito.eliminar/{id}',[ProductosController::class,'eliminarCarrito']);
+Route::name('admin')->get('admin/', [vistas::class, 'admin']);
+Route::name('ventas')->get('ventas/', [vistas::class, 'puntoVenta']);
+
+
+Route::name('admin.productos.alta')->post('admin/', [ProductosController::class, 'altaProductos']);
+Route::name('admin.productos.salvar')->put('admin.productos.salvar/{id}', [ProductosController::class, 'salvarProducto']);
+Route::name('admin.productos.eliminar')->get('admin.productos.eliminar/{id}', [ProductosController::class, 'eliminarProducto']);
+
+Route::name('admin.usuarios.alta')->post('admin.usuarios.alta', [UsuariosController::class, 'altaUsuario']);
+Route::name('admin.usuarios.editar')->put('admin.usuarios.editar/{id}', [UsuariosController::class, 'salvarUsuario']);
+Route::name('admin.usuarios.eliminar')->get('admin.usuarios.eliminar/{id}', [UsuariosController::class, 'eliminarUsuario']);
+
+
+Route::name('admin.carrito.agregar')->post('admin.carrito.agregar', [ProductosController::class, 'agregarCarrito']);
+Route::name('admin.carrito.cancelar')->get('admin.carrito.cancelar', [ProductosController::class, 'cancelarCarrito']);
+Route::name('admin.carrito.eliminar')->get('admin.carrito.eliminar/{id}', [ProductosController::class, 'eliminarCarrito']);

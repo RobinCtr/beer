@@ -83,6 +83,7 @@
                                 <td>
                                 <div class="d-flex justify-content-between">
                                         <button class="btn btn-outline-warning" data-toggle="modal" data-target="#editarUsuario{{$usuario->id}}"><i class="icon-sm mdi mdi-lead-pencil"></i></button>
+                                        <button class="btn btn-outline-info" data-toggle="modal" data-target="#detalleUsuario{{$usuario->id}}"><i class="icon-sm mdi mdi-information"></i></button>
                                         <button class="btn btn-outline-danger" data-toggle="modal" data-target="#eliminarUsuario{{$usuario->id}}"><i class="icon-sm mdi mdi-delete-forever"></i></button>
                                     </div>
                                 </td>
