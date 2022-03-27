@@ -119,21 +119,21 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($usuarios as $usuario)
+                            @foreach($proveedores as $proveedor)
                             <tr>
 
                                 <td>
-                                    <span class="pl-2">{{ $usuario->id}}</span>
+                                    <span class="pl-2">{{ $proveedor->id}}</span>
                                 </td>
-                                <td> {{ $usuario->nombreCompleto}} </td>
-                                <td> {{ $usuario->telefono}} </td>
-                                <td> {{ $usuario->correo}} </td>
-                                <td> {{ $usuario->estatus}}</td>
+                                <td> {{ $proveedor->nombre}} </td>
+                                <td> {{ $proveedor->rfc}} </td>
+                                <td> {{ $proveedor->correo}} </td>
+                                <td> {{ $proveedor->telefono}}</td>
                                 <td>
                                 <div class="d-flex justify-content-between">
-                                        <button class="btn btn-outline-warning" data-toggle="modal" data-target="#editarUsuario{{$usuario->id}}"><i class="icon-sm mdi mdi-lead-pencil"></i></button>
-                                        <button class="btn btn-outline-info" data-toggle="modal" data-target="#detalleUsuario{{$usuario->id}}"><i class="icon-sm mdi mdi-information"></i></button>
-                                        <button class="btn btn-outline-danger" data-toggle="modal" data-target="#eliminarUsuario{{$usuario->id}}"><i class="icon-sm mdi mdi-delete-forever"></i></button>
+                                        <button class="btn btn-outline-warning" data-toggle="modal" data-target="#editarProveedor{{$proveedor->id}}"><i class="icon-sm mdi mdi-lead-pencil"></i></button>
+                                        <!-- <button class="btn btn-outline-info" data-toggle="modal" data-target="#detalleProveedor{{$proveedor->id}}"><i class="icon-sm mdi mdi-information"></i></button> -->
+                                        <button class="btn btn-outline-danger" data-toggle="modal" data-target="#eliminarProveedor{{$proveedor->id}}"><i class="icon-sm mdi mdi-delete-forever"></i></button>
                                     </div>
                                 </td>
                             </tr>

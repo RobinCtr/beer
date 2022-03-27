@@ -22,13 +22,9 @@ class ProveedoresController extends Controller
            ));
            return redirect()->route('admin');
     }
-    public function editarProveedores(Proveedores $id){
-        return view("dashboard.proveedores.modificar_proveedores")
-        ->with(['proveedor'=>$id]);
-      }
       public function borrarProveedor(Proveedores $id){
         $id->delete();
-        return redirect()->route('admin.proveedores');
+        return redirect()->route('admin');
       }
       public function salvarProveedores(Proveedores $id, Request $request){
         
@@ -42,6 +38,6 @@ class ProveedoresController extends Controller
             $query->telefono = $request->telefono;
             $query->correo = $request->correo;
           $query -> save();
-          return redirect()->route('admin.proveedores');
+          return redirect()->route('admin');
       }
 }
