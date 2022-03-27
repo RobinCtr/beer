@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="{{ asset ('layouts/dashboard/assets/css/style.css') }}">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{ asset ('layouts/dashboard/assets/images/favicon.png') }}"/>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
   </head>
   <body>
     <div class="container-scroller">
@@ -26,19 +28,27 @@
             <div class="card col-lg-4 mx-auto">
               <div class="card-body px-5 py-5">
                 <h3 class="card-title text-left mb-3">Login</h3>
-                <form>
+                <form action="{{route ('login_post')}}" method="post">
+                            {{ csrf_field() }}
                   <div class="form-group">
                     <label>Correo Electrónico *</label>
-                    <input type="text" class="form-control p_input">
+                    <input type="text" name="correo" class="form-control p_input">
                   </div>
                   <div class="form-group">
                     <label>Contraseña *</label>
-                    <input type="text" class="form-control p_input">
+                    <input type="password" name="password" class="form-control p_input">
+                  </div>
+                  <div class="form-group d-flex align-items-center justify-content-between">
+                    
+                  <div  class="g-recaptcha"   style=" @error('g-recaptcha-response') border: tomato 1px solid;@enderror" data-sitekey="6LfNocoaAAAAAImpuxs1HMFwgc1oHebl0dymqDxt"></div>
+                  
                   </div>
                   <div class="form-group d-flex align-items-center justify-content-between">
                     
                     <a href="#" class="forgot-pass">Recuperar Contraseña</a>
                   </div>
+
+
                   <div class="text-center">
                     <button type="submit" class="btn btn-primary btn-block enter-btn">Login</button>
                   </div>
