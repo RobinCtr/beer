@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth;
 use App\Http\Controllers\vistas;
 use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\UsuariosController;
+use App\Http\Controllers\ProveedoresController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,6 +42,10 @@ Route::name('admin.productos.eliminar')->get('admin.productos.eliminar/{id}', [P
 Route::name('admin.usuarios.alta')->post('admin.usuarios.alta', [UsuariosController::class, 'altaUsuario']);
 Route::name('admin.usuarios.editar')->put('admin.usuarios.editar/{id}', [UsuariosController::class, 'salvarUsuario']);
 Route::name('admin.usuarios.eliminar')->get('admin.usuarios.eliminar/{id}', [UsuariosController::class, 'eliminarUsuario']);
+
+Route::name('admin.proveedores.alta')->post('admin.proveedores.alta', [ProveedoresController::class, 'altaProveedores']);
+Route::name('admin.proveedores.editar')->put('admin.proveedores.editar/{id}', [ProveedoresController::class, 'salvarProveedores']);
+Route::name('admin.proveedores.eliminar')->get('admin.proveedores.eliminar/{id}', [ProveedoresController::class, 'borrarProveedor']);
 
 
 Route::name('admin.carrito.agregar')->post('admin.carrito.agregar', [ProductosController::class, 'agregarCarrito']);
