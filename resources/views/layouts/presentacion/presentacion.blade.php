@@ -83,7 +83,7 @@
     </section> <!-- end s-home -->
     
     @yield('content')
-
+    
     @include('layouts/presentacion/footer')
 
     @include('layouts/presentacion/preloader')

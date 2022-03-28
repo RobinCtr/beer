@@ -5,6 +5,7 @@ use App\Http\Controllers\vistas;
 use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\ProveedoresController;
+use App\Http\Controllers\MessageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,6 +34,8 @@ Route::name('register_post')->post('register_post/', [Auth::class, 'register_pos
 Route::name('admin')->get('admin/', [vistas::class, 'admin']);
 
 Route::name('ventas')->get('ventas/', [vistas::class, 'puntoVenta']);
+
+Route::post('contact',[MessageController::class,'store'])->name('messages.store');
 
 
 Route::name('admin.productos.alta')->post('admin/', [ProductosController::class, 'altaProductos']);

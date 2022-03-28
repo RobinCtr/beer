@@ -17,32 +17,45 @@
             <div class="contact-primary">
 
                 <h3 class="h6">Envianos un mensaje</h3>
-
-                <form name="contactForm" id="contactForm" method="post" action="" novalidate="novalidate">
+                @include('partials.session-status')
+                <form method="POST" action="{{route('messages.store')}}">
+                    @csrf
                     <fieldset>
     
                     <div class="form-field">
-                        <input name="contactName" type="text" id="contactName" placeholder="Nombre Completo" value="" minlength="2" required="" aria-required="true" class="full-width">
+                        <input name="name" type="text" id="name" placeholder="Nombre Completo" minlength="2"  class="full-width" value="{{old('name')}}">
+                        @error('name')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                     <div class="form-field">
-                        <input name="contactEmail" type="email" id="contactEmail" placeholder="Correo Electronico" value="" required="" aria-required="true" class="full-width">
+                        <input name="email" type="email" id="email" placeholder="Correo Electronico" value="{{old('email')}}" class="full-width">
+                        @error('email')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                     <div class="form-field">
-                        <input name="contactSubject" type="text" id="contactSubject" placeholder="Asunto" value="" class="full-width">
+                        <input name="subject" type="text" id="subject" placeholder="Asunto" value="{{old('subject')}}" class="full-width">
+                        @error('subject')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                     <div class="form-field">
-                        <textarea name="contactMessage" id="contactMessage" placeholder="Mensaje" rows="10" cols="50" required="" aria-required="true" class="full-width"></textarea>
+                        <textarea name="content" id="content" placeholder="Mensaje" rows="10" cols="50" class="full-width">{{old('content')}}</textarea>
+                        @error('content')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                     <div class="form-field">
-                        <button class="full-width btn--primary">Enviar</button>
-                        <div class="submit-loader">
-                            <div class="text-loader">Cargando...</div>
-                            <div class="s-loader">
-                                <div class="bounce1"></div>
-                                <div class="bounce2"></div>
-                                <div class="bounce3"></div>
-                            </div>
-                        </div>
+                        <button type="submit" class="full-width btn--primary">Enviar</button>
                     </div>
     
                     </fieldset>
