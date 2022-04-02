@@ -188,4 +188,111 @@
 </div>
 @endforeach
 
+@section('js')
 
+<script>
+    const $nombre = document.querySelector("#nombre");
+    const patron = /[a-zA-Z/]+/;
+
+    $nombre.addEventListener("keydown", event => {
+        if (patron.test(event.key)) {
+            document.getElementById('marca').style.border = "1px solid #00cc00";
+        } else {
+            if (event.keyCode == 8 || event.keyCode == 32) {} else {
+                event.preventDefault();
+            }
+        }
+    });
+    const $rfc = document.querySelector("#rfc");
+    const patronrfc = /^[A-Za-z0-9\s]+$/g;
+
+    $rfc.addEventListener("keydown", event => {
+        if (patronrfc.test(event.key)) {
+            document.getElementById('marca').style.border = "1px solid #00cc00";
+        } else {
+            if (event.keyCode == 8 || event.keyCode == 32) {} else {
+                event.preventDefault();
+            }
+        }
+    });
+    const $calle = document.querySelector("#calle");
+    const patronc = /^[A-Za-z0-9\s]+$/g;
+
+    $rfc.addEventListener("keydown", event => {
+        if (patronc.test(event.key)) {
+            document.getElementById('marca').style.border = "1px solid #00cc00";
+        } else {
+            if (event.keyCode == 8 || event.keyCode == 32) {} else {
+                event.preventDefault();
+            }
+        }
+    });
+
+    const $municipio = document.querySelector("#municipio");
+    const patronm = /[a-zA-Z/]+/;
+
+    $nombre.addEventListener("keydown", event => {
+        if (patronm.test(event.key)) {
+            document.getElementById('marca').style.border = "1px solid #00cc00";
+        } else {
+            if (event.keyCode == 8 || event.keyCode == 32) {} else {
+                event.preventDefault();
+            }
+        }
+    });
+
+    const $estado = document.querySelector("#estado");
+    const patrone = /[a-zA-Z/]+/;
+
+    $nombre.addEventListener("keydown", event => {
+        if (patrone.test(event.key)) {
+            document.getElementById('marca').style.border = "1px solid #00cc00";
+        } else {
+            if (event.keyCode == 8 || event.keyCode == 32) {} else {
+                event.preventDefault();
+            }
+        }
+    });
+
+    const $telefono = document.querySelector("#telefono");
+    const patronT = /[0-9]+/;
+
+    $tamaño.addEventListener("keydown", event => {
+        if (patronT.test(event.key)) {
+            document.getElementById('tamaño').style.border = "1px solid #00cc00";
+        } else {
+            if (event.keyCode == 8) {} else {
+                event.preventDefault();
+            }
+        }
+    });
+
+    const $numero = document.querySelector("#numero");
+    const patronn = /[0-9]+/;
+
+    $tamaño.addEventListener("keydown", event => {
+        if (patronn.test(event.key)) {
+            document.getElementById('tamaño').style.border = "1px solid #00cc00";
+        } else {
+            if (event.keyCode == 8) {} else {
+                event.preventDefault();
+            }
+        }
+    });
+
+    const $correo = document.querySelector("#correo");
+    const patroncorreo = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+
+    $precio.addEventListener("keydown", event => {
+        if (patroncorreo.test(event.key)) {
+            document.getElementById('precio').style.border = "1px solid #00cc00";
+        } else {
+            if (event.keyCode == 8) {} else {
+                event.preventDefault();
+            }
+        }
+    });
+    
+
+</script>
+@endsection
