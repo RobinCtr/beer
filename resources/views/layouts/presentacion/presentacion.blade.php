@@ -28,6 +28,7 @@
     ================================================== -->
     <script src="{{ asset('layouts/presentacion/js/modernizr.js') }}"></script>
     <script src="{{ asset('layouts/presentacion/js/pace.min.js') }}"></script>
+    <script src="{{asset('js/jquery-3.6.0.min.js')}}"></script>
 
     <!-- favicons
     ================================================== -->

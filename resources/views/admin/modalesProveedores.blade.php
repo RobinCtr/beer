@@ -8,48 +8,73 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
+               
             <div class="modal-body">
+            @if($errors->any())
+                <div class="alert alert-danger">
+                    <ul class="m-0">
+                        @foreach($errors->all() as $error)
+                            <li>{{$error}}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
                 <form action="{{route('admin.proveedores.alta')}}" method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="nombreProveedor">Nombre del Proveedor</label>
-                            <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre del Proveedor">
+                            <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre del Proveedor" value="{{old('nombre')}}"> 
                         </div>
+                      
                         <div class="form-group col-md-6">
                             <label for="rfc">RFC del Proveedor</label>
-                            <input type="text" class="form-control" name="rfc" id="rfc" placeholder="RFC del Proveedor">
+                            <input type="text" class="form-control" name="rfc" id="rfc" placeholder="RFC del Proveedor" value="{{old('rfc')}}">
+                            
                         </div>
+                      
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="calle">Calle del Domicilio Fiscal</label>
-                            <input type="text" class="form-control" name="calle" id="calle" placeholder="Calle del Domicilio Fiscal">
+                            <input type="text" class="form-control" name="calle" id="calle" placeholder="Calle del Domicilio Fiscal" value="{{old('calle')}}">
+                            
                         </div>
+                    
                         <div class="form-group col-md-6">
                             <label for="municipio">Municipio del Domicilio Fiscal</label>
-                            <input type="text" class="form-control" name="municipio" id="municipio" placeholder="Municipio del Domicilio Fiscal">
+                            <input type="text" class="form-control" name="municipio" id="municipio" placeholder="Municipio del Domicilio Fiscal" value="{{old('municipio')}}">
+                           
                         </div>
+                       
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="estado">Estado del Domicilio Fiscal</label>
-                            <input type="text" class="form-control" name="estado" id="estado" placeholder="Estado del Domicilio Fiscal">
+                            <input type="text" class="form-control" name="estado" id="estado" placeholder="Estado del Domicilio Fiscal" value="{{old('estado')}}">
+                           
                         </div>
+                      
                         <div class="form-group col-md-6">
                             <label for="numero">Número del Domicilio Fiscal</label>
-                            <input type="number" class="form-control" name="numero" id="numero" placeholder="Número del Domicilio Fiscal">
+                            <input type="number" class="form-control" name="numero" id="numero" placeholder="Número del Domicilio Fiscal" value="{{old('numero')}}">
+                           
                         </div>
+                      
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="telefono">Telefono</label>
-                            <input type="text" class="form-control" name="telefono" id="telefono" placeholder="Telefono de contacto">
+                            <input type="text" class="form-control" name="telefono" id="telefono" placeholder="Telefono de contacto" value="{{old('telefono')}}">
+                           
                         </div>
+                       
                         <div class="form-group col-md-6">
                             <label for="correo">Correo</label>
-                            <input type="email" class="form-control" name="correo" id="correo" placeholder="Correo de contacto">
+                            <input type="email" class="form-control" name="correo" id="correo" placeholder="Correo de contacto" value="{{old('correo')}}">
+                            
                         </div>
+                   
                     </div>
                     <div class="modal-footer justify-content-between">
                         <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>

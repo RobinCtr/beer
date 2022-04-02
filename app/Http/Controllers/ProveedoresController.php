@@ -4,22 +4,28 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Proveedores;
+use App\Http\Requests\ProveedoresRequest;
+
+
 
 class ProveedoresController extends Controller
 {
-    public function altaProveedores(Request $request){
+    public function altaProveedores(ProveedoresRequest $request){
         
-        $pro = Proveedores::create(array(
-            'nombre'=>$request->input('nombre'),
-            'rfc'=>$request->input('rfc'),
-            'calle'=>$request->input('calle'),
-            'municipio'=>$request->input('municipio'),
-            'estado'=>$request->input('estado'),
-            'numero'=>$request->input('numero'),
-            'telefono'=>$request->input('telefono'),
-            'correo'=>$request->input('correo')
+        // $pro = Proveedores::create(array(
+        //     'nombre'=>$request->input('nombre'),
+        //     'rfc'=>$request->input('rfc'),
+        //     'calle'=>$request->input('calle'),
+        //     'municipio'=>$request->input('municipio'),
+        //     'estado'=>$request->input('estado'),
+        //     'numero'=>$request->input('numero'),
+        //     'telefono'=>$request->input('telefono'),
+        //     'correo'=>$request->input('correo')
 
-           ));
+        //    ));
+        Proveedores::create($request->validated());
+
+
            return redirect()->route('admin');
     }
       public function borrarProveedor(Proveedores $id){
