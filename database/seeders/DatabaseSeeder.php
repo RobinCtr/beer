@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
@@ -33,6 +34,24 @@ class DatabaseSeeder extends Seeder
             'precio'        => '30',
             'tamaño'        => '100',
             'cantidad'      => '3'
+        ]);
+        DB::table('usuarios')->insert([
+            'nombreCompleto'       => 'Roberto Cuz',
+            'telefono'             => '729 116 6400',
+            'correo'               => 'roberto@gmail.com',
+            'password'             => Crypt::encrypt('12345'),
+            'estatus'              => '0',
+            'id_tipo'              => '1',
+            'aviso'                => 'aceptado'
+        ]);
+        DB::table('usuarios')->insert([
+            'nombreCompleto'       => 'Miguel Cuz',
+            'telefono'             => '729 116 6400',
+            'correo'               => 'miguel@gmail.com',
+            'password'             => Crypt::encrypt('12345'),
+            'estatus'              => '1',
+            'id_tipo'              => '1',
+            'aviso'                => 'aceptado'
         ]);
     }
 }

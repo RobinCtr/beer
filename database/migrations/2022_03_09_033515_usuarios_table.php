@@ -19,9 +19,9 @@ class UsuariosTable extends Migration
             $table->string('telefono');
             $table->string('correo');
             $table->string('password');
-            $table->string('estatus');
+            $table->integer('estatus');
             $table->integer('id_tipo')->nullable();
-            $table->text('img');
+            $table->text('img')->nullable();
             $table->text('aviso');
 
             $table->timestamps();

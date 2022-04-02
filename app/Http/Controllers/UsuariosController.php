@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Usuarios;
+use Illuminate\Support\Facades\Crypt;
 
 class UsuariosController extends Controller
 {
@@ -21,7 +22,7 @@ class UsuariosController extends Controller
       'nombreCompleto' => $request->input('nombreCompleto'),
       'telefono' => $request->input('telefono'),
       'correo' => $request->input('correo'),
-      'password' => $request->input('password'),
+      'password' => Crypt::encrypt($request->input('password')),
       'estatus' => $request->input('estatus'),
       'aviso' => 'aceptado',
 
@@ -47,7 +48,7 @@ class UsuariosController extends Controller
     $query->nombreCompleto = $request->nombreCompleto;
     $query->telefono = $request->telefono;
     $query->correo = $request->correo;
-    $query->password = $request->password;
+    $query->password = Crypt::encrypt($request->password);
     $query->estatus = $request->estatus;
     $query->id_tipo = $request->id_tipo;
     $query->img = $img2;

@@ -8,6 +8,7 @@ use App\Models\TiposBebidas;
 use App\Models\Usuarios;
 use App\Models\Proveedores;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 
 class vistas extends Controller
@@ -19,6 +20,9 @@ class vistas extends Controller
         return view('login');
     }
     public function register (){
+        if(Auth::check()){
+            Auth::logout();
+        }
         return view('register');
     }
     public function aviso (){

@@ -35,13 +35,13 @@
                         <div class="form-group col-md-6">
                             <label for="">Estatus</label>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="estatus" id="activo" value="Activo">
+                                <input class="form-check-input" type="radio" name="estatus" id="activo" value="1">
                                 <label class="form-check-label" for="activo">
                                     Activo
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="estatus" id="inactivo" value="Inactivo">
+                                <input class="form-check-input" type="radio" name="estatus" id="inactivo" value="0">
                                 <label class="form-check-label" for="inactivo">
                                     Inactivo
                                 </label>
@@ -120,13 +120,13 @@
                         <div class="form-group col-md-6">
                             <label for="">Estatus</label>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="estatus" id="activo" value="Activo" @if($usuario->estatus == 'Activo') checked @endif>
+                                <input class="form-check-input" type="radio" name="estatus" id="activo" value="1" @if($usuario->estatus == 'Activo') checked @endif>
                                 <label class="form-check-label" for="activo">
                                     Activo
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="estatus" id="inactivo" value="Inactivo" @if($usuario->estatus == 'Inactivo') checked @endif>
+                                <input class="form-check-input" type="radio" name="estatus" id="inactivo" value="0" @if($usuario->estatus == 'Inactivo') checked @endif>
                                 <label class="form-check-label" for="inactivo">
                                     Inactivo
                                 </label>

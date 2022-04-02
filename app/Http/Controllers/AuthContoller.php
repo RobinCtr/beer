@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Usuarios;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Log;
 
-
-class Auth extends Controller
+class AuthContoller extends Controller
 {
     public function register_post(Request $request)
     {
@@ -45,29 +46,39 @@ class Auth extends Controller
             // si no me redireciona a un registro fallido
         }
     }
-    public function login_post(Request $request){
-         $validarInfo=$request->validate(
-             [
-                'correo'         => ['required', 'email', ],
-                'password'      => ['required'],// acepta letras mayusculas y minusculas, vocales acentuadas con caracteres especiales
-             'g-recaptcha-response'   => ['required']
-             ]
-             );
-        $user=Usuarios::query() //busca al ususuario
-                  ->where('correo',$request->correo)
-                  ->first();
-        if($user){ // si encuentra al usuario
-            //$passwordDecripted = Crypt::decrypt($user->password); //desencripta la contraseña
-            if($request->password == $user->password){// si la contraseña ingresada se guarda en la contraseña encriptada
+    public function login_post(Request $request)
+    {
+        $validarInfo = $request->validate(
+            [
+                'correo'         => ['required', 'email',],
+                'password'      => ['required'], // acepta letras mayusculas y minusculas, vocales acentuadas con caracteres especiales
+                'g-recaptcha-response'   => ['required']
+            ]
+        );
+        $user = Usuarios::query() //busca al ususuario
+            ->where('correo', $request->correo)
+            ->first();
+        if ($user) { // si encuentra al usuario
+            $passwordDecripted = Crypt::decrypt($user->password); //desencripta la contraseña
+            if ($request->password == $passwordDecripted) { // si la contraseña ingresada se guarda en la contraseña encriptada
                 Log::info("$user->correo inicio sesion"); //log de informacion
-                //$remember=($request->has('checkbox_remember'))?true:false;
+                //$remember = ($request->has('checkbox_remember')) ? true : false;
                 //Auth::login($user,$remember);
+                $request->session()->put('session_id', $user->id);
+                $request->session()->put('session_name', $user->nombreCompleto);
+                $request->session()->put('session_perfil', $user->id_tipo);
+                $request->session()->put('session_estado', $user->estatus);
+                $request->session()->put('session_img', $user->img);
+
+               
+
+
                 return redirect()->route('admin');
-            }else{
+            } else {
                 Log::info("Intento de ingreso fallido");
-                return back()->with('message-warning', "Licencias de acceso incorrectas");// si no encuentra al usuario me redirecciona un mensaje de licencias de acceso incorrectas
+                return back()->with('message-warning', "Licencias de acceso incorrectas"); // si no encuentra al usuario me redirecciona un mensaje de licencias de acceso incorrectas
             }
-        }else{
+        } else {
             Log::info("Intento de ingreso fallido");
             return back()->with('message-warning', "Licencias de acceso incorrectas"); //si no se guardo la contraseña me redirecciona un mensaje de licencias de acceso incorrectas
         }
