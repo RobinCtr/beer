@@ -8,6 +8,7 @@
                 <div class="card-title d-flex justify-content-between">
                     <h4>PRODUCTOS</h4>
                     <div class="btn btn-outline-primary" data-toggle="modal" data-target="#agregarProducto">Agregar Producto</div>
+                    <div class="btn btn-outline-primary"><a href="{{route('reportePDF')}}">Descargar PDF</a></div>
                 </div>
                 <div class="table-responsive">
                     <table class="table">
@@ -56,6 +57,7 @@
                 <div class="card-title d-flex justify-content-between">
                     <h4>USUARIOS</h4>
                     <div class="btn btn-outline-primary" data-toggle="modal" data-target="#agregarUsuario">Agregar Usuario</div>
+                    <div class="btn btn-outline-primary"><a href="{{route('generateUsuariosPDF')}}">Descargar PDF</a></div>
                 </div>
                 <div class="table-responsive">
                     <table class="table">
@@ -105,6 +107,7 @@
                 <div class="card-title d-flex justify-content-between">
                     <h4>PROVEEDORES</h4>
                     <div class="btn btn-outline-primary" data-toggle="modal" data-target="#agregarProveedor">Agregar Proveedor</div>
+                    <div class="btn btn-outline-primary"><a href="{{route('generateProveedoresPDF')}}">Descargar PDF</a></div>
                 </div>
                 <div class="table-responsive">
                     <table class="table">
@@ -146,6 +149,9 @@
         </div>
     </div>
 </div>
+
+
+
 <!-- -------- MODALES DE CRUD --------  -->
 @include('admin.modalesProductos')
 @include('admin.modalesUsuarios')

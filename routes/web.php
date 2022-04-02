@@ -6,7 +6,10 @@ use App\Http\Controllers\vistas;
 use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\ProveedoresController;
+use App\Http\Controllers\MessageController;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\PDFController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +42,11 @@ Route::name('register_post')->post('register_post/', [AuthContoller::class, 'reg
 
 Route::name('ventas')->get('ventas/', [vistas::class, 'puntoVenta']);
 
+Route::post('contact',[MessageController::class,'store'])->name('messages.store');
+
+Route::get('generate-pdf', [PDFController::class, 'generatePDF'])->name('reportePDF');
+Route::get('generateUsers-pdf', [PDFController::class, 'generateUsuariosPDF'])->name('generateUsuariosPDF');
+Route::get('generateProveedores-pdf', [PDFController::class, 'generateProveedoresPDF'])->name('generateProveedoresPDF');
 
 Route::name('admin.productos.alta')->post('admin/', [ProductosController::class, 'altaProductos']);
 Route::name('admin.productos.salvar')->put('admin.productos.salvar/{id}', [ProductosController::class, 'salvarProducto']);

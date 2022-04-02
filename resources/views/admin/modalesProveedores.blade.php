@@ -8,48 +8,73 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
+               
             <div class="modal-body">
+            @if($errors->any())
+                <div class="alert alert-danger">
+                    <ul class="m-0">
+                        @foreach($errors->all() as $error)
+                            <li>{{$error}}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
                 <form action="{{route('admin.proveedores.alta')}}" method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="nombreProveedor">Nombre del Proveedor</label>
-                            <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre del Proveedor">
+                            <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre del Proveedor" value="{{old('nombre')}}"> 
                         </div>
+                      
                         <div class="form-group col-md-6">
                             <label for="rfc">RFC del Proveedor</label>
-                            <input type="text" class="form-control" name="rfc" id="rfc" placeholder="RFC del Proveedor">
+                            <input type="text" class="form-control" name="rfc" id="rfc" placeholder="RFC del Proveedor" value="{{old('rfc')}}">
+                            
                         </div>
+                      
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="calle">Calle del Domicilio Fiscal</label>
-                            <input type="text" class="form-control" name="calle" id="calle" placeholder="Calle del Domicilio Fiscal">
+                            <input type="text" class="form-control" name="calle" id="calle" placeholder="Calle del Domicilio Fiscal" value="{{old('calle')}}">
+                            
                         </div>
+                    
                         <div class="form-group col-md-6">
                             <label for="municipio">Municipio del Domicilio Fiscal</label>
-                            <input type="text" class="form-control" name="municipio" id="municipio" placeholder="Municipio del Domicilio Fiscal">
+                            <input type="text" class="form-control" name="municipio" id="municipio" placeholder="Municipio del Domicilio Fiscal" value="{{old('municipio')}}">
+                           
                         </div>
+                       
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="estado">Estado del Domicilio Fiscal</label>
-                            <input type="text" class="form-control" name="estado" id="estado" placeholder="Estado del Domicilio Fiscal">
+                            <input type="text" class="form-control" name="estado" id="estado" placeholder="Estado del Domicilio Fiscal" value="{{old('estado')}}">
+                           
                         </div>
+                      
                         <div class="form-group col-md-6">
                             <label for="numero">Número del Domicilio Fiscal</label>
-                            <input type="number" class="form-control" name="numero" id="numero" placeholder="Número del Domicilio Fiscal">
+                            <input type="number" class="form-control" name="numero" id="numero" placeholder="Número del Domicilio Fiscal" value="{{old('numero')}}">
+                           
                         </div>
+                      
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="telefono">Telefono</label>
-                            <input type="text" class="form-control" name="telefono" id="telefono" placeholder="Telefono de contacto">
+                            <input type="text" class="form-control" name="telefono" id="telefono" placeholder="Telefono de contacto" value="{{old('telefono')}}">
+                           
                         </div>
+                       
                         <div class="form-group col-md-6">
                             <label for="correo">Correo</label>
-                            <input type="email" class="form-control" name="correo" id="correo" placeholder="Correo de contacto">
+                            <input type="email" class="form-control" name="correo" id="correo" placeholder="Correo de contacto" value="{{old('correo')}}">
+                            
                         </div>
+                   
                     </div>
                     <div class="modal-footer justify-content-between">
                         <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
@@ -163,4 +188,111 @@
 </div>
 @endforeach
 
+@section('js')
 
+<script>
+    const $nombre = document.querySelector("#nombre");
+    const patron = /[a-zA-Z/]+/;
+
+    $nombre.addEventListener("keydown", event => {
+        if (patron.test(event.key)) {
+            document.getElementById('marca').style.border = "1px solid #00cc00";
+        } else {
+            if (event.keyCode == 8 || event.keyCode == 32) {} else {
+                event.preventDefault();
+            }
+        }
+    });
+    const $rfc = document.querySelector("#rfc");
+    const patronrfc = /^[A-Za-z0-9\s]+$/g;
+
+    $rfc.addEventListener("keydown", event => {
+        if (patronrfc.test(event.key)) {
+            document.getElementById('marca').style.border = "1px solid #00cc00";
+        } else {
+            if (event.keyCode == 8 || event.keyCode == 32) {} else {
+                event.preventDefault();
+            }
+        }
+    });
+    const $calle = document.querySelector("#calle");
+    const patronc = /^[A-Za-z0-9\s]+$/g;
+
+    $rfc.addEventListener("keydown", event => {
+        if (patronc.test(event.key)) {
+            document.getElementById('marca').style.border = "1px solid #00cc00";
+        } else {
+            if (event.keyCode == 8 || event.keyCode == 32) {} else {
+                event.preventDefault();
+            }
+        }
+    });
+
+    const $municipio = document.querySelector("#municipio");
+    const patronm = /[a-zA-Z/]+/;
+
+    $nombre.addEventListener("keydown", event => {
+        if (patronm.test(event.key)) {
+            document.getElementById('marca').style.border = "1px solid #00cc00";
+        } else {
+            if (event.keyCode == 8 || event.keyCode == 32) {} else {
+                event.preventDefault();
+            }
+        }
+    });
+
+    const $estado = document.querySelector("#estado");
+    const patrone = /[a-zA-Z/]+/;
+
+    $nombre.addEventListener("keydown", event => {
+        if (patrone.test(event.key)) {
+            document.getElementById('marca').style.border = "1px solid #00cc00";
+        } else {
+            if (event.keyCode == 8 || event.keyCode == 32) {} else {
+                event.preventDefault();
+            }
+        }
+    });
+
+    const $telefono = document.querySelector("#telefono");
+    const patronT = /[0-9]+/;
+
+    $tamaño.addEventListener("keydown", event => {
+        if (patronT.test(event.key)) {
+            document.getElementById('tamaño').style.border = "1px solid #00cc00";
+        } else {
+            if (event.keyCode == 8) {} else {
+                event.preventDefault();
+            }
+        }
+    });
+
+    const $numero = document.querySelector("#numero");
+    const patronn = /[0-9]+/;
+
+    $tamaño.addEventListener("keydown", event => {
+        if (patronn.test(event.key)) {
+            document.getElementById('tamaño').style.border = "1px solid #00cc00";
+        } else {
+            if (event.keyCode == 8) {} else {
+                event.preventDefault();
+            }
+        }
+    });
+
+    const $correo = document.querySelector("#correo");
+    const patroncorreo = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+
+    $precio.addEventListener("keydown", event => {
+        if (patroncorreo.test(event.key)) {
+            document.getElementById('precio').style.border = "1px solid #00cc00";
+        } else {
+            if (event.keyCode == 8) {} else {
+                event.preventDefault();
+            }
+        }
+    });
+    
+
+</script>
+@endsection

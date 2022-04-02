@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Usuarios;
+<<<<<<< HEAD
 use Illuminate\Support\Facades\Crypt;
 
+=======
+use App\Http\Requests\UsuariosRequest;
+>>>>>>> 8d58f191b84a05ec7e3bdab74d100bafc709b8ee
 class UsuariosController extends Controller
 {
   public function altaUsuario(Request $request)
