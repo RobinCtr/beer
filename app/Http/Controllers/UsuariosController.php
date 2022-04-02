@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Usuarios;
-
+use App\Http\Requests\UsuariosRequest;
 class UsuariosController extends Controller
 {
   public function altaUsuario(Request $request)

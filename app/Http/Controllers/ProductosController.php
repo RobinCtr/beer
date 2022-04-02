@@ -7,6 +7,7 @@ use App\Models\Carrito;
 use Illuminate\Http\Request;
 use App\Models\Productos;
 use App\Models\TiposBebidas;
+use App\Http\Requests\ProductosRequest;
 
 class ProductosController extends Controller
 {
